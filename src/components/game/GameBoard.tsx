@@ -11,7 +11,7 @@ interface GameBoardProps {
 
 const GameBoard = ({ board, onCellClick, winningLine, winner, disabled }: GameBoardProps) => {
   return (
-    <div className="relative w-full max-w-[280px] sm:max-w-[320px] md:max-w-[360px] mx-auto">
+    <div className="relative w-full max-w-[320px] sm:max-w-[380px] md:max-w-[420px] mx-auto">
       <WinningLine winningLine={winningLine} winner={winner} />
       <div className="grid grid-cols-3 gap-2 sm:gap-3">
         {board.map((cell, index) => (

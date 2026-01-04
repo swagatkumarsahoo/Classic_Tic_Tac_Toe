@@ -25,7 +25,7 @@ const GameCell = ({ value, onClick, isWinning, disabled }: GameCellProps) => {
       {value && (
         <span
           className={cn(
-            "text-4xl sm:text-5xl md:text-6xl font-display font-bold animate-pop-in",
+            "text-5xl sm:text-6xl md:text-7xl font-display font-bold animate-pop-in",
             value === "X" && "text-playerX text-glow-x",
             value === "O" && "text-playerO text-glow-o"
           )}
