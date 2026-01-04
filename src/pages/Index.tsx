@@ -1,8 +1,10 @@
+import { useEffect, useRef } from "react";
 import GameBoard from "@/components/game/GameBoard";
 import ScoreBoard from "@/components/game/ScoreBoard";
 import GameStatus from "@/components/game/GameStatus";
 import GameControls from "@/components/game/GameControls";
 import { useTicTacToe } from "@/hooks/useTicTacToe";
+import { useSoundEffects } from "@/hooks/useSoundEffects";
 
 const Index = () => {
   const {
@@ -17,6 +19,38 @@ const Index = () => {
     resetScores,
     gameOver,
   } = useTicTacToe();
+
+  const { playPlaceSound, playWinSound, playDrawSound } = useSoundEffects();
+  const prevBoardRef = useRef(board);
+  const prevWinnerRef = useRef(winner);
+  const prevDrawRef = useRef(isDraw);
+
+  useEffect(() => {
+    // Detect new piece placed
+    const prevBoard = prevBoardRef.current;
+    const newMoveIndex = board.findIndex((cell, i) => cell !== null && prevBoard[i] === null);
+    
+    if (newMoveIndex !== -1 && board[newMoveIndex]) {
+      playPlaceSound(board[newMoveIndex] as "X" | "O");
+    }
+    prevBoardRef.current = board;
+  }, [board, playPlaceSound]);
+
+  useEffect(() => {
+    // Detect win
+    if (winner && !prevWinnerRef.current) {
+      playWinSound();
+    }
+    prevWinnerRef.current = winner;
+  }, [winner, playWinSound]);
+
+  useEffect(() => {
+    // Detect draw
+    if (isDraw && !prevDrawRef.current) {
+      playDrawSound();
+    }
+    prevDrawRef.current = isDraw;
+  }, [isDraw, playDrawSound]);
 
   return (
     <div className="min-h-screen bg-background flex flex-col items-center justify-center p-4 sm:p-6">
@@ -52,6 +86,7 @@ const Index = () => {
           board={board}
           onCellClick={handleCellClick}
           winningLine={winningLine}
+          winner={winner}
           disabled={gameOver}
         />
 
