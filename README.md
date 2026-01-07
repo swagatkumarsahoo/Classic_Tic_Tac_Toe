@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Tic Tac Toe Game
 
 A modern, interactive Tic Tac Toe game built with React, TypeScript, and Tailwind CSS. Features sound effects, score tracking, winning line highlighting, and a responsive design that works on all devices.
@@ -172,3 +173,6 @@ This project is open source and available under the [MIT License](LICENSE).
 ---
 
 **Enjoy playing Tic Tac Toe! 🎉**
+=======
+# Classic_Tic_Tac_Toe
+>>>>>>> 49abbed80a6f86f9e8c722c89a2ff2e9a5f2e988
