@@ -150,9 +150,4 @@ The game is fully responsive and works on:
 - `npm run lint` - Run ESLint
 
 
----
 
-**Enjoy playing Tic Tac Toe! 🎉**
-=======
-# Classic_Tic_Tac_Toe
->>>>>>> 49abbed80a6f86f9e8c722c89a2ff2e9a5f2e988
