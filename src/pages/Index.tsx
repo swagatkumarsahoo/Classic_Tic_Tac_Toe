@@ -26,7 +26,6 @@ const Index = () => {
   const prevDrawRef = useRef(isDraw);
 
   useEffect(() => {
-    // Detect new piece placed
     const prevBoard = prevBoardRef.current;
     const newMoveIndex = board.findIndex((cell, i) => cell !== null && prevBoard[i] === null);
     
@@ -37,7 +36,6 @@ const Index = () => {
   }, [board, playPlaceSound]);
 
   useEffect(() => {
-    // Detect win
     if (winner && !prevWinnerRef.current) {
       playWinSound();
     }
@@ -45,7 +43,6 @@ const Index = () => {
   }, [winner, playWinSound]);
 
   useEffect(() => {
-    // Detect draw
     if (isDraw && !prevDrawRef.current) {
       playDrawSound();
     }
@@ -54,14 +51,12 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background flex flex-col items-center justify-center p-4 sm:p-6">
-      {/* Background gradient effects */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-1/4 -left-20 w-72 h-72 bg-playerX/10 rounded-full blur-[100px]" />
         <div className="absolute bottom-1/4 -right-20 w-72 h-72 bg-playerO/10 rounded-full blur-[100px]" />
       </div>
 
       <div className="relative z-10 w-full max-w-lg flex flex-col items-center gap-6 sm:gap-8">
-        {/* Title */}
         <header className="text-center">
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-display font-bold text-foreground tracking-wider">
             TIC TAC TOE
@@ -71,17 +66,14 @@ const Index = () => {
           </p>
         </header>
 
-        {/* Score Board */}
         <ScoreBoard scores={scores} currentPlayer={currentPlayer} />
 
-        {/* Game Status */}
         <GameStatus
           winner={winner}
           isDraw={isDraw}
           currentPlayer={currentPlayer}
         />
 
-        {/* Game Board */}
         <GameBoard
           board={board}
           onCellClick={handleCellClick}
@@ -90,7 +82,6 @@ const Index = () => {
           disabled={gameOver}
         />
 
-        {/* Controls */}
         <GameControls
           onNewGame={startNewGame}
           onResetScores={resetScores}
